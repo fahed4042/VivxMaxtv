@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OTTO TV+ - تطبيق الترفيه الشامل</title>
+    <meta name="description" content="تطبيق OTTO TV+ - شاهد آلاف الأفلام والمسلسلات، القنوات المباشرة، القنوات الرياضية، وأكثر بجودة عالية ومجاناً!">
+    <meta name="theme-color" content="#1a0a2e">
+    <link rel="icon" href="https://c.top4top.io/p_36871b0m81.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+        }
+
+        :root {
+            --primary-purple: #6C63FF;
+            --dark-purple: #3f3d56;
+            --darker-bg: #0a0612;
+            --card-bg: #1a1429;
+            --text-light: #ffffff;
+            --text-gray: #b8b8b8;
+            --accent-orange: #FF6B6B;
+            --accent-blue: #4ECDC4;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-gold: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            --gradient-green: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        body {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            background: var(--darker-bg);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(ellipse at top, #1a0f2e 0%, #0a0612 100%);
+        }
+
+        .gradient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            animation: float 25s infinite ease-in-out;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            width: 700px;
+            height: 700px;
+            background: var(--gradient-1);
+            top: -20%;
+            right: -15%;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: var(--gradient-2);
+            bottom: -15%;
+            left: -10%;
+            animation-delay: 8s;
+        }
+
+        .blob-3 {
+            width: 500px;
+            height: 500px;
+            background: var(--gradient-3);
+            top: 45%;
+            left: 45%;
+            animation-delay: 16s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(40px, -40px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-30px, 30px) rotate(240deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gradient-blob {
+                animation: none;
+                opacity: 0.08;
+            }
+        }
+
+        /* Header */
+        header {
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 6, 18, 0.97);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .app-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .app-icon:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 70px 20px 40px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(108, 99, 255, 0.18);
+            border: 1.5px solid rgba(108, 99, 255, 0.35);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            color: #c4b5fd;
+            font-weight: 800;
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.15);
+        }
+
+        .hero-badge i {
+            color: #fbbf24;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .hero h2 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 45px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.9;
+        }
+
+        /* App Preview - Dual Phones */
+        .app-preview {
+            position: relative;
+            max-width: 750px;
+            margin: 60px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            min-height: 550px;
+        }
+
+        @media (min-width: 769px) {
+            .app-preview {
+                animation: floatPreview 4s ease-in-out infinite;
+            }
+        }
+
+        @keyframes floatPreview {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-18px);
+            }
+        }
+
+        .phone-mockup {
+            position: relative;
+            background: linear-gradient(145deg, #1c1c1e, #000000);
+            border-radius: 45px;
+            padding: 12px;
+            box-shadow:
+                0 60px 120px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            width: 320px;
+            transition: all 0.5s ease;
+        }
+
+        .phone-mockup:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow:
+                0 70px 140px rgba(108, 99, 255, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.15);
+        }
+
+        .phone-mockup:first-child {
+            transform: rotate(-8deg);
+        }
+
+        .phone-mockup:last-child {
+            transform: rotate(8deg);
+        }
+
+        .phone-mockup:first-child:hover {
+            transform: rotate(-8deg) translateY(-10px) scale(1.03);
+        }
+
+        .phone-mockup:last-child:hover {
+            transform: rotate(8deg) translateY(-10px) scale(1.03);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+            box-shadow: inset 0 -2px 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .phone-screen {
+            border-radius: 38px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .phone-screen img {
+            width: 100%;
+            display: block;
+        }
+
+        .glow-effect {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 99, 255, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        @media (min-width: 769px) {
+            .glow-effect {
+                animation: rotate 20s linear infinite;
+            }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .app-preview {
+                flex-direction: column;
+                gap: 30px;
+                min-height: auto;
+            }
+
+            .phone-mockup {
+                width: 280px;
+            }
+
+            .phone-mockup:first-child,
+            .phone-mockup:last-child {
+                transform: rotate(0deg);
+            }
+
+            .phone-mockup:first-child:hover,
+            .phone-mockup:last-child:hover {
+                transform: translateY(-10px) scale(1.03);
+            }
+        }
+
+        /* Download Section */
+        .download-section {
+            padding: 50px 20px;
+            max-width: 650px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            padding: 22px 40px;
+            margin: 20px 0;
+            border-radius: 20px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .download-btn:hover::before {
+            width: 450px;
+            height: 450px;
+        }
+
+        .btn-download {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow:
+                0 18px 40px rgba(108, 99, 255, 0.45),
+                0 6px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow:
+                0 25px 55px rgba(108, 99, 255, 0.65),
+                0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .download-btn i {
+            font-size: 2rem;
+            z-index: 1;
+        }
+
+        .btn-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1;
+        }
+
+        .btn-content small {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            font-weight: 700;
+        }
+
+        .btn-content span {
+            font-size: 1.25rem;
+            font-weight: 900;
+        }
+
+        /* Bottom Sheet Modal */
+        .bottom-sheet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .bottom-sheet-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .bottom-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, #1a1429 0%, #0f0a1b 100%);
+            border-radius: 35px 35px 0 0;
+            padding: 30px 25px 40px;
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bottom-sheet.active {
+            transform: translateY(0);
+        }
+
+        .sheet-handle {
+            width: 50px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            margin: 0 auto 25px;
+        }
+
+        .sheet-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sheet-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: var(--gradient-1);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.4);
+        }
+
+        .sheet-header h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sheet-header p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .sheet-options {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .sheet-option {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 22px;
+            background: linear-gradient(145deg, rgba(26, 20, 41, 0.6), rgba(20, 15, 35, 0.4));
+            border: 2px solid rgba(108, 99, 255, 0.2);
+            border-radius: 22px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .sheet-option:hover {
+            border-color: rgba(108, 99, 255, 0.6);
+            background: linear-gradient(145deg, rgba(108, 99, 255, 0.25), rgba(118, 75, 162, 0.2));
+            transform: translateX(-8px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.3);
+        }
+
+        .sheet-option i {
+            font-size: 2.2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-1);
+            border-radius: 15px;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.3);
+        }
+
+        .sheet-option:nth-child(2) i {
+            background: var(--gradient-3);
+        }
+
+        .sheet-option-content {
+            flex: 1;
+            text-align: right;
+        }
+
+        .sheet-option-content h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .sheet-option-content p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        /* Features Section - Grid Style */
+        .features-section {
+            padding: 90px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h3 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -0.8px;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        @media (max-width: 968px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 568px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, rgba(26, 20, 41, 0.6), rgba(20, 15, 35, 0.4));
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 40px 30px;
+            border: 1.5px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(108, 99, 255, 0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(108, 99, 255, 0.35);
+            box-shadow:
+                0 30px 60px rgba(108, 99, 255, 0.25),
+                0 12px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Gradient variations */
+        .feature-card:nth-child(2)::before,
+        .feature-card:nth-child(2) .feature-icon {
+            background: var(--gradient-2);
+        }
+
+        .feature-card:nth-child(3)::before,
+        .feature-card:nth-child(3) .feature-icon {
+            background: var(--gradient-3);
+        }
+
+        .feature-card:nth-child(4)::before,
+        .feature-card:nth-child(4) .feature-icon {
+            background: var(--gradient-gold);
+        }
+
+        .feature-card:nth-child(5)::before,
+        .feature-card:nth-child(5) .feature-icon {
+            background: var(--gradient-green);
+        }
+
+        .feature-card:nth-child(6)::before,
+        .feature-card:nth-child(6) .feature-icon {
+            background: var(--gradient-1);
+        }
+
+        .feature-card:nth-child(7)::before,
+        .feature-card:nth-child(7) .feature-icon {
+            background: var(--gradient-2);
+        }
+
+        .feature-card:nth-child(8)::before,
+        .feature-card:nth-child(8) .feature-icon {
+            background: var(--gradient-3);
+        }
+
+        .feature-card:nth-child(9)::before,
+        .feature-card:nth-child(9) .feature-icon {
+            background: var(--gradient-gold);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 28px;
+            background: var(--gradient-1);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 12px 35px rgba(108, 99, 255, 0.35);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.12) rotate(8deg);
+            box-shadow: 0 18px 45px rgba(108, 99, 255, 0.55);
+        }
+
+        .feature-card h4 {
+            font-size: 1.45rem;
+            margin-bottom: 18px;
+            font-weight: 900;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.85;
+            font-size: 0.98rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 70px 20px;
+            background: linear-gradient(135deg, rgba(26, 20, 41, 0.4), rgba(20, 15, 35, 0.3));
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+        }
+
+        .stats-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 45px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 25px;
+            background: rgba(26, 20, 41, 0.3);
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(108, 99, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(108, 99, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(26, 20, 41, 0.7), rgba(20, 15, 35, 0.5));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.4rem;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--gradient-1);
+            border-color: transparent;
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 12px 30px rgba(108, 99, 255, 0.45);
+        }
+
+        .footer-text {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .section-header h3 {
+                font-size: 2.2rem;
+            }
+
+            .download-btn {
+                padding: 18px 28px;
+                font-size: 1.05rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .stat-number {
+                font-size: 2.8rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+
+            .bottom-sheet {
+                max-width: 100%;
+                border-radius: 25px 25px 0 0;
+            }
+
+            .sheet-option {
+                flex-direction: row-reverse;
+                text-align: right;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.85rem;
+            }
+
+            .download-btn {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .btn-content {
+                align-items: center;
+            }
+        }
+
+        /* Scroll Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.9s ease-out forwards;
+        }
+
+        .feature-card {
+            opacity: 0;
+            animation: fadeInUp 0.9s ease-out forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.15s; }
+        .feature-card:nth-child(3) { animation-delay: 0.2s; }
+        .feature-card:nth-child(4) { animation-delay: 0.25s; }
+        .feature-card:nth-child(5) { animation-delay: 0.3s; }
+        .feature-card:nth-child(6) { animation-delay: 0.35s; }
+        .feature-card:nth-child(7) { animation-delay: 0.4s; }
+        .feature-card:nth-child(8) { animation-delay: 0.45s; }
+        .feature-card:nth-child(9) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="https://c.top4top.io/p_36871b0m81.jpg" alt="OTTO TV+" class="app-icon">
+                <div class="logo-text">
+                    <h1>OTTO TV+</h1>
+                    <p>عالمك الترفيهي الشامل</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero fade-in-up">
+        <div class="hero-badge">
+            <i class="fas fa-star"></i>
+            النسخة الأحدث 2025
+        </div>
+        <h2>
+            استمتع بأفضل تجربة ترفيهية مع<br>
+            <span class="gradient-text">OTTO TV+</span>
+        </h2>
+        <p>
+            تطبيقك الشامل لمشاهدة آلاف الأفلام والمسلسلات العربية والأجنبية، القنوات المباشرة، القنوات الرياضية بما فيها beIN Sports، وأكثر بجودة عالية وبدون إعلانات مزعجة!
+        </p>
+
+        <!-- App Preview - Dual Phones -->
+        <div class="app-preview">
+            <div class="glow-effect"></div>
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <img src="https://d.top4top.io/p_36931mt9r1.jpg" alt="OTTO TV+ App">
+                </div>
+            </div>
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <img src="https://c.top4top.io/p_3693rwr5u1.jpg" alt="OTTO TV+ App 2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section fade-in-up">
+        <button class="download-btn btn-download" id="downloadBtn">
+            <i class="fas fa-download"></i>
+            <div class="btn-content">
+                <small>تحميل مجاني</small>
+                <span>تحميل التطبيق الآن</span>
+            </div>
+        </button>
+    </section>
+
+    <!-- Bottom Sheet Modal -->
+    <div class="bottom-sheet-overlay" id="bottomSheetOverlay"></div>
+    <div class="bottom-sheet" id="bottomSheet">
+        <div class="sheet-handle"></div>
+
+        <div class="sheet-header">
+            <div class="sheet-icon">
+                <i class="fas fa-download"></i>
+            </div>
+            <h3>اختر طريقة التحميل</h3>
+            <p>حمل التطبيق بالطريقة الأسهل بالنسبة لك</p>
+        </div>
+
+        <div class="sheet-options">
+            <a href="https://t.me/bitmactv" class="sheet-option" target="_blank">
+                <i class="fab fa-telegram"></i>
+                <div class="sheet-option-content">
+                    <h4>التحميل عبر تيليجرام</h4>
+                    <p>احصل على رابط التحميل من قناتنا الرسمية</p>
+                </div>
+            </a>
+
+            <a href="https://www.mediafire.com/file/lpoc13ac8tin8n8/OTTO_TV%252B_signed.apk/file" class="sheet-option" target="_blank" download>
+                <i class="fas fa-cloud-download-alt"></i>
+                <div class="sheet-option-content">
+                    <h4>التحميل المباشر</h4>
+                    <p>تحميل مباشر للملف APK</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">أفلام ومسلسلات</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">قناة مباشرة</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">مجاني بالكامل</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4K</div>
+                <div class="stat-label">جودة عالية</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-header">
+            <h3>مميزات <span class="gradient-text">OTTO TV+</span></h3>
+            <p>اكتشف كل ما يميز تطبيقنا ويجعله الخيار الأفضل لك</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h4>مكتبة ضخمة من الأفلام</h4>
+                <p>آلاف الأفلام العربية والأجنبية بجميع التصنيفات</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <h4>مسلسلات متنوعة</h4>
+                <p>تابع أحدث المسلسلات العربية والتركية والأجنبية</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-broadcast-tower"></i>
+                </div>
+                <h4>قنوات بث مباشر</h4>
+                <p>أكثر من 200 قناة عربية مباشرة للترفيه</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <h4>القنوات الرياضية</h4>
+                <p>جميع قنوات beIN Sports بجودة عالية</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h4>جدول المباريات</h4>
+                <p>جدول كامل للمباريات مع المواعيد الدقيقة</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-hd-video"></i>
+                </div>
+                <h4>جودة عالية HD & 4K</h4>
+                <p>استمتع بالمشاهدة بأعلى جودة ممكنة</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h4>إمكانية التحميل</h4>
+                <p>حمل محتواك المفضل للمشاهدة بدون إنترنت</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h4>واجهة سهلة</h4>
+                <p>تصميم عصري وبسيط للجميع</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sync"></i>
+                </div>
+                <h4>تحديثات مستمرة</h4>
+                <p>محتوى جديد يومياً وتحسينات دورية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://t.me/ottotv" class="social-link" target="_blank" aria-label="تيليجرام">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="#" class="social-link" target="_blank" aria-label="فيسبوك">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="mailto:support@ottotv.com" class="social-link" aria-label="البريد الإلكتروني">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p class="footer-text">
+            &copy; 2025 OTTO TV+. جميع الحقوق محفوظة<br>
+            تطبيق للترفيه والمشاهدة المجانية
+        </p>
+    </footer>
+
+    <script>
+        // Bottom Sheet functionality
+        const downloadBtn = document.getElementById('downloadBtn');
+        const bottomSheet = document.getElementById('bottomSheet');
+        const bottomSheetOverlay = document.getElementById('bottomSheetOverlay');
+
+        // Open bottom sheet
+        downloadBtn.addEventListener('click', function() {
+            bottomSheet.classList.add('active');
+            bottomSheetOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close bottom sheet when clicking overlay
+        bottomSheetOverlay.addEventListener('click', function() {
+            bottomSheet.classList.remove('active');
+            bottomSheetOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close bottom sheet on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && bottomSheet.classList.contains('active')) {
+                bottomSheet.classList.remove('active');
+                bottomSheetOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Parallax effect
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const blobs = document.querySelectorAll('.gradient-blob');
+                blobs.forEach((blob, index) => {
+                    const speed = 0.3 + (index * 0.1);
+                    blob.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        }
+
+        // Touch device optimization
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+        }
+    </script>
+</body>
+</html>
+
